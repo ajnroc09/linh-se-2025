@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Detail</title>
+</head>
+<body>
+<div>
+    <img th:src="${employee.image}" width = "210" height = "210">
+</div>
+<div>
+    <h2 th:text = "${employee.name}" />
+</div>
+</body>
+</html>

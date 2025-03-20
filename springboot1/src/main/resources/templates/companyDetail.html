@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Details</title>
+</head>
+<body>
+<h1>Company Details</h1>
+
+<div>
+    <h2 th:text="${company.name}">Company Name</h2>
+    <img th:src="@{${company.image}}" alt="Company Image" width="100">
+    <p th:text="${company.address}">Company Address</p>
+</div>
+
+<h3>Employees:</h3>
+<ul>
+    <!-- Loop through the list of employees and display their details -->
+    <li th:each="employee : ${company.employees}">
+        <img th:src="@{${employee.image}}" alt="Employee Image" width="50">
+        <span th:text="${employee.name}">Employee Name</span>
+        <span th:text="${employee.age}">Employee Age</span>
+        <span th:text="${employee.address}">Employee Address</span>
+    </li>
+</ul>
+
+<a href="/company">Back to Home</a>
+</body>
+</html>

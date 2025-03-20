@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>EMPLOYEE LIST</h2>
+    <div><a th:href="'/employee/add'"> Add Employee</a></div>
+    <table border ="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}"/>
+            <td>
+                <a th:href = "'/employee/detail/' +${employee.id}" th:text ="${employee.name}"/>
+            </td>
+            <td>
+                <img th:src="${employee.image}" width="100" height="100"/>
+            </td>
+            <td> <a th:href="'/employee/update/' +${employee.id}">UPDATE</a></td>
+            <td> <a th:href="'/employee/delete/' +${employee.id}">DELETE</a></td>
+            <a>DELETE</a>
+        </tr>
+    </table>
+</div>
+<div class="filterContainer">
+    Company:
+    <select id="filterCompany">
+        <option value="0">All companies</option>
+        <option th:each="comp : ${companies}"
+                th:value="${comp.id}"
+                th:text="${comp.name}" />
+    </select>
+    Sort:
+    <select id="sortOptions">
+        <option value="0">Latest</option>
+        <option value="1">Oldest</option>
+        <option value="2">By name ASC</option>
+        <option value="3">By name DESC</option>
+    </select>
+</div>
+<div class="filterContainer">
+    Company:
+    <select id="filterCompany">
+        <option value="0">All companies</option>
+        <option th:each="comp : ${companies}"
+                th:value="${comp.id}"
+                th:text="${comp.name}" />
+    </select>
+    Sort:
+    <select id="sortOptions">
+        <option value="0">Latest</option>
+        <option value="1">Oldest</option>
+        <option value="2">By name ASC</option>
+        <option value="3">By name DESC</option>
+    </select>
+</div>
+</body>
+</html>
