@@ -9,7 +9,12 @@ public class Company {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	private String name;
+	private String image;
+	private  String address;
+	@OneToMany(mappedBy = "company")
+	private List<Employee> employees;
+	//----------------------
 	public Long getId() {
 		return id;
 	}
@@ -49,11 +54,4 @@ public class Company {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
-
-	private String name;
-	private String image;
-	private  String address;
-	@OneToMany(mappedBy = "company")
-	private List<Employee> employees;
-
 }

@@ -1,17 +1,22 @@
 package fit.se2.springboot1.model;
+
 import jakarta.persistence.*;
 import org.springframework.context.annotation.EnableMBeanExport;
+
 @Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id",nullable = false)
+	@Column(name = "id", nullable = false)
 	private Long id;
 	private String name;
 	private int age;
 	private String image;
 	private String address;
+	@ManyToOne
+	private Company company;
 
+	//----------------------
 	public Company getCompany() {
 		return company;
 	}
@@ -20,8 +25,6 @@ public class Employee {
 		this.company = company;
 	}
 
-	@ManyToOne
-	private Company company;
 	public Long getId() {
 		return id;
 	}
@@ -38,9 +41,7 @@ public class Employee {
 		this.name = name;
 	}
 
-	public int getAge() {
-		return age;
-	}
+	public int getAge() { return age; }
 
 	public void setAge(int age) {
 		this.age = age;

@@ -24,6 +24,7 @@ public class EmployeeDao {
 	EntityManager em;
 	@Autowired
 	CompanyRepository companyRepository;
+
 	// data access methods go here
 	public Page<Employee> filterAndSortEmployees(Long comId,
 	                                             int gender,
@@ -62,7 +63,7 @@ public class EmployeeDao {
 		}
 		// sort
 		cq.orderBy(sortOrder);
-// finalize & return results
+		// finalize & return results
 		TypedQuery<Employee> tq = em.createQuery(cq);
 		tq.setFirstResult((int) pageable.getOffset());
 		tq.setMaxResults(pageable.getPageSize());
