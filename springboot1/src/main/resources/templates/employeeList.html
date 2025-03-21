@@ -59,7 +59,9 @@
         Company:
         <select id="filterCompany">
             <option value="0">All companies</option>
-            <option th:each="comp : ${companies}" th:value="${comp.id}" th:text="${comp.name}" />
+            <option th:each="comp : ${companies}"
+                    th:value="${comp.id}"
+                    th:text="${comp.name}" />
         </select>
         Sort:
         <select id="sortOptions">
@@ -86,6 +88,7 @@
             <th>Age</th>
             <th>Address</th>
             <th>Gender</th>
+            <th>Company</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
@@ -101,7 +104,8 @@
                  <td th:text="${employee.age}"></td>
                  <td th:text="${employee.address}"></td>
                  <td th:text="${employee.gender == 2 ? 'Male' : 'Female'}"></td>
-                <td><a th:href="'/employee/update/' + ${employee.id}">Update</a></td>
+                 <td th:text="${employee.company != null ? employee.company.name : 'No Company'}"></td>
+                 <td><a th:href="'/employee/update/' + ${employee.id}">Update</a></td>
                 <td><a th:href="'/employee/delete/' + ${employee.id}">Delete</a></td>
               </tr>
             </div>

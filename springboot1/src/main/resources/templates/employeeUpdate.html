@@ -11,6 +11,7 @@
     <h2>UPDATE EMPLOYEE</h2>
     <form method="post" action="/employee/save" th:object="${employee}">
         <input type="hidden" th:field="*{id}"/>
+
         <p>
             <label>Employee name:</label>
             <input class="form-control" type="text" th:field="*{name}"/>
@@ -38,7 +39,16 @@
                 <option value="1" th:selected="*{gender == 1}">Female</option>
             </select>
         </p>
+        <p class = "form-group">
+            <label>Company: </label>
+            <select class="form-select" th:field="*{company.id}">
+                <option th:each="comp: ${companies}"
+                        th:value="${comp.id}"
+                        th:text="${comp.name}">
+                </option>
+            </select>
 
+        </p>
         <p>
             <button type="submit">UPDATE</button>
         </p>

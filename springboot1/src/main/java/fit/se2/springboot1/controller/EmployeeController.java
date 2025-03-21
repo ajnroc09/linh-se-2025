@@ -57,7 +57,9 @@ public class EmployeeController {
 	public String updateEmployee(
 			@PathVariable(value = "id") Long id, Model model) {
 		Employee employee = employeeRepository.getById(id);
-		model.addAttribute(employee);
+		List<Company> companies = companyRepository.findAll();
+		model.addAttribute("employee",employee);
+		model.addAttribute("companies",companies);
 		return "employeeUpdate";
 	}
 
