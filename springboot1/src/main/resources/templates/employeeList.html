@@ -7,54 +7,53 @@
     <meta charset="UTF-8">
     <title>Employee List</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <script>
-      window.addEventListener("load", function () {
-      let comId = [[${comId}]];
-      let gender = [[${gender}]];
-      let sortMode = [[${sortMode}]];
-      let page = [[${page}]];
 
-//-----------
-    function filterRedirect() {
-    let url = "/employee/list?company=" + comId + "&gender=" + gender;
-    url = url + "&sort=" + sortMode + "&page=" + page;
-    window.location.href = url; // redirect
-}
-//------------
-      window.addEventListener("load", function () {
-          const comFilter = document.getElementById("filterCompany");
-          comFilter.value = comId;
-          comFilter.addEventListener("change", function (e) {
-              comId = e.target.value;
-              filterRedirect();
-          });
-          const sortMenu = document.getElementById("sortOptions");
-          sortMenu.value = sortMode;
-          sortMenu.addEventListener("change", function (e) {
-              sortMode = e.target.value;
-              filterRedirect();
-          });
-          const genderFilter = document.getElementById("filterGender");
-          genderFilter.value = gender;
-          genderFilter.addEventListener("change", function () {
-          gender = genderFilter.value;
-          filterRedirect();
-          })
-
-          const pageLinks = document.querySelectorAll("#pagibar > a");
-          pageLinks.forEach(link => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                page = parseInt(link.getAttribute("data"));
-                filterRedirect();
-            });
-          });
-      });
-    </script>
 </head>
 
 <body>
 <div layout:fragment="content">
+    <script>
+        window.addEventListener("load", function () {
+        let comId = [[${comId}]];
+        let gender = [[${gender}]];
+        let sortMode = [[${sortMode}]];
+        let page = [[${page}]];
+
+      function filterRedirect() {
+      let url = "/employee/list?company=" + comId + "&gender=" + gender;
+      url = url + "&sort=" + sortMode + "&page=" + page;
+      window.location.href = url; // redirect
+  }
+
+            const comFilter = document.getElementById("filterCompany");
+            comFilter.value = comId;
+            comFilter.addEventListener("change", function (e) {
+                comId = e.target.value;
+                filterRedirect();
+            });
+            const sortMenu = document.getElementById("sortOptions");
+            sortMenu.value = sortMode;
+            sortMenu.addEventListener("change", function (e) {
+                sortMode = e.target.value;
+                filterRedirect();
+            });
+            const genderFilter = document.getElementById("filterGender");
+            genderFilter.value = gender;
+            genderFilter.addEventListener("change", function () {
+            gender = genderFilter.value;
+            filterRedirect();
+            })
+
+            const pageLinks = document.querySelectorAll("#pagibar > a");
+            pageLinks.forEach(link => {
+              link.addEventListener("click", (e) => {
+                  e.preventDefault();
+                  page = parseInt(link.getAttribute("data"));
+                  filterRedirect();
+              });
+            });
+        });
+    </script>
     <h2>EMPLOYEE LIST</h2>
     <div class="filterContainer">
         Company:
@@ -102,7 +101,6 @@
         </div>
         </table>
     </section>
-
 
 
     <div class="pagination" id="pagibar">
