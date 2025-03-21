@@ -13,10 +13,20 @@ public class Employee {
 	private int age;
 	private String image;
 	private String address;
+	private int gender;
 	@ManyToOne
 	private Company company;
 
 	//----------------------
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
 	public Company getCompany() {
 		return company;
 	}

@@ -70,10 +70,11 @@
         </select>
         Gender:
         <select id="filterGender">
-            <option value="0">All genders</option>
-            <option th:value="1" th:text="Female"/>
-            <option th:value="2" th:text="Male"/>
+            <option value="0" th:selected="${gender == 0}">All genders</option>
+            <option value="1" th:selected="${gender == 1}">Female</option>
+            <option value="2" th:selected="${gender == 2}">Male</option>
         </select>
+
     </div>
     <section class="employees">
         <table border="1">
@@ -82,6 +83,9 @@
             <th>ID</th>
             <th>Name</th>
             <th>Image</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Gender</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
@@ -94,6 +98,9 @@
                 <td>
                     <img th:src="${employee.image}" width="100" height="100" />
                 </td>
+                 <td th:text="${employee.age}"></td>
+                 <td th:text="${employee.address}"></td>
+                 <td th:text="${employee.gender == 2 ? 'Male' : 'Female'}"></td>
                 <td><a th:href="'/employee/update/' + ${employee.id}">Update</a></td>
                 <td><a th:href="'/employee/delete/' + ${employee.id}">Delete</a></td>
               </tr>

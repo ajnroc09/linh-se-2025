@@ -52,11 +52,16 @@ public class EmployeeDao {
 			predicates.add(cb.equal(employee.get("company"), comp.get()));
 		}
 		// filtering by gender (0 means not filtered by gender)
-		if (gender == 1) {
-			predicates.add(cb.equal(employee.get("male"), false));
-		} else if (gender == 2) {
-			predicates.add(cb.equal(employee.get("male"), true));
+		if (gender == 1) { // Female
+			predicates.add(cb.equal(employee.get("gender"), 1));
+		} else if (gender == 2) { // Male
+			predicates.add(cb.equal(employee.get("gender"), 2));
 		}
+//		if (gender == 1) {
+//			predicates.add(cb.equal(employee.get("male"), false));
+//		} else if (gender == 2) {
+//			predicates.add(cb.equal(employee.get("male"), true));
+//		}
 		// add a list of predicates as query criteria
 		if (!predicates.isEmpty()) {
 			cq.where(predicates.toArray(new Predicate[0]));

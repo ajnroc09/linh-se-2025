@@ -30,6 +30,15 @@
                 <input class="form-control" type="text" th:field="*{address}"/>
             </label>
         </p>
+
+        <p class="form-group">
+            <label>Gender:</label>
+            <select class="form-select" th:field="*{gender}">
+                <option value="2" th:selected="*{gender == 2}">Male</option>
+                <option value="1" th:selected="*{gender == 1}">Female</option>
+            </select>
+        </p>
+
         <p>
             <button type="submit">UPDATE</button>
         </p>
