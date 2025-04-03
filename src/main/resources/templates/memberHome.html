@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Member Home</title>
+</head>
+<body>
+<h1>Welcome, <span th:text="${username}"></span>!</h1>
+<p>This is the member home page. Only authenticated users can view this page.</p>
+
+<!-- Link to Home page -->
+<a href="/">Back to Home</a>
+</body>
+</html>
